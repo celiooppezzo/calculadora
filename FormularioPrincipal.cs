@@ -14,7 +14,7 @@ namespace Calculadora
     public partial class FormularioPrincipal : Form
     {
         private byte i = 0; // Controla se o ponto flutuante já foi inserido no número
-        cl_operacoes operacoes = new cl_operacoes();
+       
 
         public FormularioPrincipal()
         {
@@ -77,12 +77,18 @@ namespace Calculadora
             txtX.Text += "0";
         }
 
+        /// <summary>
+        /// Função que verifica se a vírgula decimal já foi acrscentada anteriormente,
+        /// não permitindo que seja colocada novamente.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnvirgula_Click(object sender, EventArgs e)
         {
-            if(this.i == 0)
+            if(i == 0)
             {
                 txtX.Text += ",";
-                this.i = 1;
+                i = 1;
             }
        
         }  
@@ -93,7 +99,7 @@ namespace Calculadora
             txtResposta.Text = "";
             txtY.Text = txtX.Text;
             txtX.Text = "";
-            this.i = 0;
+            i = 0;
         }
          //================Realiza a adição dos valores
         private void btnAdicao_Click(object sender, EventArgs e)
@@ -108,7 +114,7 @@ namespace Calculadora
             operacoes.Y = y;
             operacoes.somar();
             txtResposta.Text = Convert.ToString(operacoes.Resposta);
-            this.i = 0;
+            i = 0;
             txtX.Text = "";
             txtY.Text = "";
             
